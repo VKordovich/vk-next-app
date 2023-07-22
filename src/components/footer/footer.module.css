@@ -1,0 +1,33 @@
+.wrapper {
+    background-color: var(--primary-color);
+    color: var(--page-color);
+    font-size: 16px;
+    line-height: 20px;
+    padding: 25px 30px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px 40px;
+}
+
+.wrapper a:hover {
+    color: var(--light-gray-hover);
+    cursor: pointer;
+}
+
+@media (max-width: 765px) {
+    .wrapper {
+        grid-template-columns: minmax(300px, 1fr);
+    }
+
+    .rights {
+        justify-self: center;
+    }
+
+    .agreement {
+        justify-self: center;
+    }
+
+    .confidentiality {
+        justify-self: center;
+    }
+}
