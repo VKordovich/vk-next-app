@@ -4,4 +4,7 @@ import {
 
 export interface LayoutProps {
     children: ReactNode;
+    params: {
+        type: string;
+    }
 }

@@ -17,7 +17,7 @@ import {
 	usePathname,
 	useRouter
 } from 'next/navigation';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
 	{ route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
@@ -27,7 +27,6 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 ];
 
 export default function Menu({menuDataProp, firstCategory}: MenuProps ): React.JSX.Element {
-	const router = useRouter();
 	const [menuData, setMenuData] = useState<MenuItem[]>(menuDataProp);
 	const [,firstLvlPath,secondLvlPath] = usePathname().split('/')
 

@@ -2,14 +2,18 @@ import {
     JSX,
     useEffect,
     useState,
-    KeyboardEvent
+    KeyboardEvent,
+    forwardRef,
+    ForwardedRef
 } from 'react';
 import style from './Rating.module.css'
 import cn from "classnames";
 import {RatingProps} from "@/components/Rating/Rating.props";
 import StarIcon from '@/assets/Star.svg'
 
-export const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps): JSX.Element => {
+// eslint-disable-next-line react/display-name
+export const Rating = forwardRef(
+    ({ isEditable = false, rating, setRating, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [ratings, setRatings] = useState<JSX.Element[]>(new Array(5).fill(<></>));
     useEffect(() => {constructRating(rating)}, [rating]);
     const constructRating = (currentRating: number) => {
@@ -45,8 +49,8 @@ export const Rating = ({ isEditable = false, rating, setRating, ...props }: Rati
     }
 
     return (
-        <div {...props} onMouseLeave={() => changeDisplay(rating)}>
+        <div {...props} ref={ref} onMouseLeave={() => changeDisplay(rating)}>
             {ratings.map((r, i) => (<span key={i}>{r}</span>))}
         </div>
     )
-}
+})
